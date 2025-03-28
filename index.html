@@ -3,29 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>シンプルTODO管理</title>
+    <title>リッチTODO管理</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>シンプルTODO管理</h1>
-        <div class="todo-form">
-            <input type="text" id="todo-input" placeholder="新しいタスクを入力...">
-            <button id="add-button">追加</button>
-        </div>
-        <div class="todo-filters">
-            <button class="filter-btn active" data-filter="all">すべて</button>
-            <button class="filter-btn" data-filter="active">未完了</button>
-            <button class="filter-btn" data-filter="completed">完了済み</button>
-        </div>
-        <ul id="todo-list">
-            <!-- Todo items will be added here -->
-        </ul>
-        <div class="todo-stats">
-            <span id="items-left">0 個のタスクが残っています</span>
-            <button id="clear-completed">完了したタスクを削除</button>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="container">
+                <h1><i class="fas fa-check-circle"></i> リッチTODO管理</h1>
+                <p class="app-subtitle">効率的にタスクを管理しましょう</p>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="add-task-section">
+                <div class="task-input-card">
+                    <div class="task-input-wrapper">
+                        <input type="text" id="todo-input" placeholder="新しいタスクを入力...">
+                        <div class="task-priority">
+                            <span class="priority-label">優先度:</span>
+                            <div class="priority-selector">
+                                <button class="priority-btn low active" data-priority="low"><i class="fas fa-circle"></i></button>
+                                <button class="priority-btn medium" data-priority="medium"><i class="fas fa-circle"></i></button>
+                                <button class="priority-btn high" data-priority="high"><i class="fas fa-circle"></i></button>
+                            </div>
+                        </div>
+                        <button id="add-button"><i class="fas fa-plus"></i> 追加</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="task-actions">
+                <div class="task-stats">
+                    <span id="items-left"><i class="fas fa-tasks"></i> <span class="count">0</span> 個のタスクが残っています</span>
+                </div>
+                <div class="todo-filters">
+                    <button class="filter-btn active" data-filter="all"><i class="fas fa-list"></i> すべて</button>
+                    <button class="filter-btn" data-filter="active"><i class="fas fa-hourglass-half"></i> 未完了</button>
+                    <button class="filter-btn" data-filter="completed"><i class="fas fa-check"></i> 完了済み</button>
+                </div>
+                <button id="clear-completed"><i class="fas fa-trash-alt"></i> 完了したタスクを削除</button>
+            </section>
+
+            <section class="tasks-container">
+                <div id="todo-list-wrapper">
+                    <ul id="todo-list">
+                        <!-- Todo items will be added here -->
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <div class="container">
+                <p>&copy; 2025 リッチTODO管理アプリ</p>
+            </div>
+        </footer>
+
+        <!-- Task Detail Modal -->
+        <div id="task-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>タスクの詳細</h2>
+                <div class="modal-body">
+                    <div class="task-detail-group">
+                        <label for="modal-task-title">タスク名:</label>
+                        <input type="text" id="modal-task-title" class="modal-input">
+                    </div>
+                    <div class="task-detail-group">
+                        <label>優先度:</label>
+                        <div class="priority-selector">
+                            <button class="priority-btn low" data-priority="low"><i class="fas fa-circle"></i></button>
+                            <button class="priority-btn medium" data-priority="medium"><i class="fas fa-circle"></i></button>
+                            <button class="priority-btn high" data-priority="high"><i class="fas fa-circle"></i></button>
+                        </div>
+                    </div>
+                    <div class="task-detail-group">
+                        <label for="modal-created-date">作成日:</label>
+                        <div id="modal-created-date" class="modal-date"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-delete-btn" class="modal-btn delete-btn"><i class="fas fa-trash-alt"></i> 削除</button>
+                    <button id="modal-save-btn" class="modal-btn save-btn"><i class="fas fa-save"></i> 保存</button>
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
