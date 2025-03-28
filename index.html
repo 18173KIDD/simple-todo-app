@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シンプルTODO管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>シンプルTODO管理</h1>
+        <div class="todo-form">
+            <input type="text" id="todo-input" placeholder="新しいタスクを入力...">
+            <button id="add-button">追加</button>
+        </div>
+        <div class="todo-filters">
+            <button class="filter-btn active" data-filter="all">すべて</button>
+            <button class="filter-btn" data-filter="active">未完了</button>
+            <button class="filter-btn" data-filter="completed">完了済み</button>
+        </div>
+        <ul id="todo-list">
+            <!-- Todo items will be added here -->
+        </ul>
+        <div class="todo-stats">
+            <span id="items-left">0 個のタスクが残っています</span>
+            <button id="clear-completed">完了したタスクを削除</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
